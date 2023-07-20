@@ -1,0 +1,34 @@
+@import '/node_modules//bootswatch/dist/minty/bootstrap.min.css';
+
+.ticket-card {
+  transition: all .5s ease;
+}
+
+.ticket-card:hover {
+  transform: scale(1.02);
+}
+
+.user-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.chat {
+  height: 600px;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+  ::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+  ::-webkit-scrollbar-thumb {
+  background: #78C2AD; 
+    border-radius:10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  
+  background: #555; 
+} 
