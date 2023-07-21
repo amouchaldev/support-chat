@@ -55,6 +55,7 @@ const Chat = () => {
           },
         }
       );
+      console.log('res => ', response)
       if (response.status === 201) {
         setMessages([
           ...messages,
@@ -183,7 +184,7 @@ const Chat = () => {
                 className="btn btn-sm btn-light"
                 onClick={acceptTicket}
               >
-                Accept this ticket
+                I accept the ticket
               </button>
             </div>
           )}

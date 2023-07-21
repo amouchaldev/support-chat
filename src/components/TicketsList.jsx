@@ -18,7 +18,6 @@ const TicketsList = ({status = null}) => {
       })
       .then(data => {
           setTickets(data?.data)
-          // console.log(data.data)
       })
       .catch(err => {
         console.log('error : ', err)

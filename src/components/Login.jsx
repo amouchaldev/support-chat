@@ -20,7 +20,7 @@ const Login = () => {
 
   return (
     <div className="row">
-        <div className="col-12 col-lg-8">
+        <div className="col-12 col-lg-8 mx-auto mt-5">
             <form onSubmit={e => doLogin(e)}>
                 <div className="mb-3">
                 <label htmlFor="" className="form-label">Email</label>
@@ -29,7 +29,7 @@ const Login = () => {
                 </div>
                 <div className="mb-3">
                 <label htmlFor="" className="form-label">Password</label>
-                <input type="text" className="form-control" ref={password}/>
+                <input type="password" className="form-control" ref={password}/>
                 { errors?.password && <p className="text-warning">{errors?.password}</p> }
                 </div>
                 <div className="mb-3 d-grid">

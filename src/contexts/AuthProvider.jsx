@@ -26,16 +26,21 @@ const AuthProvider = ({ children }) => {
 
         localStorage.setItem("_user", JSON.stringify({id: response.data.user.id, name: response.data.user.name}));
         setUser({id: response.data.user.id, name: response.data.user.name});
-        Navigate('/tickets')
+        Navigate('/')
 
       } 
     } catch (err) {
       setErrors(err.response.data.errors)
     }
   };
-
+  const logout = () => {
+    setUser(null)
+    setToken(null)
+    localStorage.removeItem('_token')
+    localStorage.removeItem('_user')
+  }
   return (
-    <AuthContext.Provider value={{ login, user, token, errors }}>
+    <AuthContext.Provider value={{ login, user, token, errors, logout }}>
       {children}
     </AuthContext.Provider>
   );
