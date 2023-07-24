@@ -39,6 +39,7 @@ const Chat = () => {
         setTicket(data?.data);
       })
       .catch((err) => console.log("err : ", err));
+
   }, []);
 
   const sendMessage = async () => {
@@ -72,24 +73,24 @@ const Chat = () => {
     }
   };
 
-  const acceptTicket = async () => {
-    try {
-      const response = await api.patch(
-        `tickets/${ticketId}/accept`,
-        {},
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
-      if (response.status) {
-        setTicket({ ...ticket, support_id: user.id });
-      }
-    } catch (err) {
-      console.log("errr : ", err);
-    }
-  };
+  // const acceptTicket = async () => {
+  //   try {
+  //     const response = await api.patch(
+  //       `tickets/${ticketId}/accept`,
+  //       {},
+  //       {
+  //         headers: {
+  //           Authorization: "Bearer " + token,
+  //         },
+  //       }
+  //     );
+  //     if (response.status) {
+  //       setTicket({ ...ticket, support_id: user.id });
+  //     }
+  //   } catch (err) {
+  //     console.log("errr : ", err);
+  //   }
+  // };
   const resolved = async () => {
     Swal.fire({
       title: 'Are you sure?',
@@ -135,6 +136,7 @@ const Chat = () => {
     })
 
   }
+  
   return (
     <section className="my-2">
       <div className="d-flex justify-content-betweens">
@@ -142,8 +144,11 @@ const Chat = () => {
           <IoIosArrowBack />
         </button>
       </div>
-      <div className="bg-dark">
-        <div className="pt-3 rounded-2 text-light chat d-flex flex-column justify-content-end">
+      <div className="bg-dark card">
+        <div className="card-header">
+          <h6 className="text-light m-0">{ticket?.user?.first_name + ' ' + ticket?.user?.last_name}</h6>
+        </div>
+        <div className="card-body pt-3 rounded-2 text-light chat d-flex flex-column justify-content-end">
           {messages.map((message) => {
             if (message.hasOwnProperty("user_id")) {
               return (
@@ -178,27 +183,18 @@ const Chat = () => {
               );
             }
           })}
-          {!ticket?.support_id && (
-            <div className="d-flex justify-content-center mb-3">
-              <button
-                className="btn btn-sm btn-light"
-                onClick={acceptTicket}
-              >
-                I accept the ticket
-              </button>
-            </div>
-          )}
+
         </div>
-        {(ticket?.support_id && !ticket?.status) && (
+        <div className="card-footer p-0">
           <input
-            type="text"
-            className="form-control rounded-0"
-            value={msg}
-            placeholder="Message..."
-            onChange={(e) => setMsg(e.target.value)}
-            onKeyPress={(e) => e.key === "Enter" && sendMessage()}
-          />
-        )}
+        type="text"
+        className="form-control rounded-0"
+        value={msg}
+        placeholder="Message..."
+        onChange={(e) => setMsg(e.target.value)}
+        onKeyPress={(e) => e.key === "Enter" && sendMessage()}
+      />
+        </div>
       </div>
       {(ticket?.support_id && !ticket?.status) && 
       <div className="mt-2 d-flex justify-content-end">

@@ -1,11 +1,11 @@
-import { NavLink, useLocation } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 const Tabs = () => {
 
   return (
     <ul className="nav nav-tabs mb-4">
         <li className="nav-item">
-            <NavLink to='/tickets' end={true} className={`nav-link ${({isActive}) => isActive ? 'active' : ''}`}>All</NavLink>
+            <NavLink to='/tickets' end={true} className={`nav-link ${({isActive}) => isActive ? 'active' : ''}`}>New</NavLink>
         </li>
         <li className="nav-item">
             <NavLink to='/tickets/pending' className={`nav-link ${({isActive}) => isActive ? 'active' : ''}`}>Pending</NavLink>
